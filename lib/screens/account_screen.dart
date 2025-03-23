@@ -54,8 +54,13 @@ class AccountScreen {
   }
 
   _getAllAccount() async {
+    try{
     List<Account> listAccounts = await _accountService.getAll();
     print(listAccounts);
+    } on Exception {
+      print("Não deu");
+      print("Tente novamente");
+    }
   }
 
   _addExampleAccount() async{

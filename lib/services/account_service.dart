@@ -11,7 +11,7 @@ class AccountService {
   Stream<String> get streamInfos => _streamController.stream;
   //Para dar acesso à stream, criamos um getter.
 
-  String url = "https://api.github.co/gists/817123940af787eb17a6d4d6160a8858";
+  String url = "https://api.github.com/gists/817123940af787eb17a6d4d6160a8858";
 
   Future<List<Account>> getAll() async {
     Response response = await get(Uri.parse(url));

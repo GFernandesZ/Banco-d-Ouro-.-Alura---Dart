@@ -80,7 +80,7 @@ class Transaction {
   
   @override
   String toString() {
-    return '\\nTransação $id\\n Enviado por$senderAccountId\\nRecebido por: $receceiveAccountID\\nHora: $date\\nQuantidade: $amount\\nTaxas: $taxes';
+    return '\\nTransação $id\\n Enviado por$senderAccountId\\nRecebido por: $receiverAccountId\\nHora: $date\\nQuantidade: $amount\\nTaxas: $taxes';
   }
 
   //O método toString fornece uma representação textual de um objeto, útil para debugging.
@@ -90,7 +90,7 @@ class Transaction {
 
     return other.id == id &&
         other.senderAccountId == senderAccountId &&
-        other.receceiveAccountID == receceiveAccountID &&
+        other.receiverAccountId == receiverAccountId &&
         other.date == date &&
         other.amount == amount &&
         other.taxes == taxes;
@@ -100,7 +100,7 @@ class Transaction {
   int get hashCode {
     return id.hashCode ^
         senderAccountId.hashCode ^
-        receceiveAccountID.hashCode ^
+        receiverAccountId.hashCode ^
         date.hashCode ^
         amount.hashCode ^
         taxes.hashCode;

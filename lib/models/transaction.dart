@@ -3,7 +3,7 @@ import 'dart:convert';
 class Transaction {
   String id;
   String senderAccountId;
-  String receceiveAccountID;
+  String receiverAccountId;
   DateTime date;
   double amount;
   double taxes;
@@ -11,7 +11,7 @@ class Transaction {
   Transaction({
     required this.id,
     required this.senderAccountId,
-    required this.receceiveAccountID,
+    required this.receiverAccountId,
     required this.date,
     required this.amount,
     required this.taxes,
@@ -21,7 +21,7 @@ class Transaction {
     return Transaction(
       id: map['id'] as String,
       senderAccountId: map['senderAccountId'] as String,
-      receceiveAccountID: map['receceiveAccountID'] as String,
+      receiverAccountId: map['receiverAccountId'] as String,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
       amount: map['amount'] as double,
       taxes: map['taxes'] as double,
@@ -37,7 +37,7 @@ class Transaction {
     return <String, dynamic>{
       'id' : id,
       'senderAccountId' : senderAccountId,
-      'receceiveAccountID' : receceiveAccountID,
+      'receiverAccountId' : receiverAccountId,
       'date' : date,
       'amount' : amount,
       'taxes' : taxes,
@@ -51,26 +51,26 @@ class Transaction {
   ({
     String? id,
     String? senderAccountId,
-    String? receceiveAccountID,
+    String? receiverAccountId,
     DateTime? date,
     double? amount,
     double? taxes,
   }) {
-        return Transaction(
-          id: id ?? this.id,  
-          senderAccountId: senderAccountId ?? this.senderAccountId, 
-          receceiveAccountID: receceiveAccountID ?? this.receceiveAccountID, 
-          date: date ?? this.date, 
-          amount: amount ?? this.amount, 
-          taxes: taxes ?? this.taxes,
-          );
-      }
+    return Transaction(
+      id: id ?? this.id,
+      senderAccountId: senderAccountId ?? this.senderAccountId,
+      receiverAccountId: receiverAccountId ?? this.receiverAccountId,
+      date: date ?? this.date,
+      amount: amount ?? this.amount,
+      taxes: taxes ?? this.taxes,
+    );
+  }
 
 //copyWith, facilita a criação de uma cópia de um objeto com algumas alterações. Esse método é particularmente útil quando você deseja modificar um ou mais atributos de um objeto existente sem afetar o original.
 
 @override
   String toString() {
-    return '\\nTransação $id\\n Enviado por$senderAccountId\\nRecebido por: $receceiveAccountID\\nHora: $date\\nQuantidade: $amount\\nTaxas: $taxes';
+    return '\\nTransação $id\\n Enviado por$senderAccountId\\nRecebido por: $receiverAccountId\\nHora: $date\\nQuantidade: $amount\\nTaxas: $taxes';
   }
   //O método toString fornece uma representação textual de um objeto, útil para debugging.
 @override
@@ -79,7 +79,7 @@ class Transaction {
 
     return other.id == id &&
         other.senderAccountId == senderAccountId &&
-        other.receceiveAccountID == receceiveAccountID &&
+        other.receiverAccountId == receiverAccountId &&
         other.date == date &&
         other.amount == amount &&
         other.taxes == taxes;
@@ -87,7 +87,7 @@ class Transaction {
 
   @override
   int get hashCode {
-    return id.hashCode ^ senderAccountId.hashCode ^ receceiveAccountID.hashCode ^ date.hashCode ^ amount.hashCode ^ taxes.hashCode;
+    return id.hashCode ^ senderAccountId.hashCode ^ receiverAccountId.hashCode ^ date.hashCode ^ amount.hashCode ^ taxes.hashCode;
   }
   //O operador == e o método hashCode são fundamentais para a comparação de objetos. O Dart os usa para determinar se duas instâncias de uma classe são iguais.
 }

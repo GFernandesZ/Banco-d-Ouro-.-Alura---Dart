@@ -21,7 +21,7 @@ class Account {
       name: map["name"], 
       lastName: map["lastName"], 
       balance: map["balance"],
-      accountType: : map["accountType"] as String,
+      accountType: map["accountType"] as String,
       );
   }
   Map<String, dynamic> toMap(){

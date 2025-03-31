@@ -5,18 +5,21 @@ double calculateTaxesByAccount({
   required double amount
 }) {
   if(amount < 5000) return 0;
-
-  if(sender.accountType!.toUpperCase() == "Ambrosia"){
-    return amount * 0.005;
-  }
-   else if (sender.accountType!.toUpperCase() == "Canjica") {
-    return amount * 0.0033;
-  }
-   else if (sender.accountType!.toUpperCase() == "Pudim") {
-    return amount * 0.0025;
-  }
-   else {
-    return amount * 0.001;
+  if (sender.accountType != null){
+    if(sender.accountType!.toUpperCase() == "Ambrosia"){
+      return amount * 0.005;
+    }
+    else if (sender.accountType!.toUpperCase() == "Canjica") {
+      return amount * 0.0033;
+    }
+    else if (sender.accountType!.toUpperCase() == "Pudim") {
+      return amount * 0.0025;
+    }
+    else {
+      return amount * 0.001;
+    }
+  } else {
+    return 0;
   }
 }
 

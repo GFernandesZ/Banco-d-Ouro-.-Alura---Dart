@@ -5,7 +5,7 @@ class Account {
   String name;
   String lastName;
   double balance;
-  String accountType;
+  String? accountType;
 
   Account({
     required this.id, 
@@ -21,7 +21,7 @@ class Account {
       name: map["name"], 
       lastName: map["lastName"], 
       balance: map["balance"],
-      accountType: map["accountType"] as String,
+      accountType: (map['accountType'] != null) ? map["accountType"] as String : null,
       );
   }
   Map<String, dynamic> toMap(){

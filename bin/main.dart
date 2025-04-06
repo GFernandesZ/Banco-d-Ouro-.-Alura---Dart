@@ -1,12 +1,33 @@
-import 'package:dart_assincronismo/screens/account_screen.dart';
+// import 'package:dart_assincronismo/screens/account_screen.dart';
+import 'package:dart_assincronismo/exceptions/transaction_exceptions.dart';
 import 'package:dart_assincronismo/services/transaction_service.dart';
 
-void main() {
-  // AccountScreen accountScreen = AccountScreen();
-  // accountScreen.initializeStream();
-  // accountScreen.runChatBot(); 
-  TransactionService().makeTransaction(idSender: "ID001", idReceive: "id002", amount: 5);
+void main(){
+  TransactionService()
+  .makeTransaction(
+    idSender: "ID001", 
+    idReceive: "ID003", 
+    amount: 5001
+    ).catchError((e){
+      print(e.message);
+      print("${e.cause.name} possui saldo ${e.cause.balance} que é menor que ${e.amount + e.taxes}");}, 
+      test: (error) => error is InsufficientFundsException,
+    );
+
 }
+
+// void main() async {
+//   // AccountScreen accountScreen = AccountScreen();
+//   // accountScreen.initializeStream();
+//   // accountScreen.runChatBot();
+//   try {
+//   await TransactionService()
+//       .makeTransaction(idSender: "ID001", idReceive: "ID003", amount: 5001);
+// } on InsufficientFundsException catch (e) {
+//   print(e.message);
+//   print("${e.cause.name} possui saldo ${e.cause.balance} que é menor que ${e.amount + e.taxes}");
+// }
+// }
 
 
 

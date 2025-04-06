@@ -5,21 +5,22 @@ double calculateTaxesByAccount({
   required double amount
 }) {
   if(amount < 5000) return 0;
+
   if (sender.accountType != null){
-    if(sender.accountType!.toUpperCase() == "Ambrosia"){
+    if(sender.accountType!.toUpperCase() == "AMBROSIA"){
       return amount * 0.005;
     }
-    else if (sender.accountType!.toUpperCase() == "Canjica") {
+    else if (sender.accountType!.toUpperCase() == "CANJICA") {
       return amount * 0.0033;
     }
-    else if (sender.accountType!.toUpperCase() == "Pudim") {
+    else if (sender.accountType!.toUpperCase() == "PUDIM") {
       return amount * 0.0025;
     }
     else {
       return amount * 0.001;
     }
   } else {
-    return 0;
+    return 0.1;
   }
 }
 

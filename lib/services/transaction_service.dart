@@ -13,7 +13,7 @@ class TransactionService {
   final AccountService _accountService = AccountService();
   String url = "https://api.github.com/gists/817123940af787eb17a6d4d6160a8858";
   
-  makeTransaction({
+  Future<void> makeTransaction({
     required String idSender,
     required String idReceive,
     required double amount,

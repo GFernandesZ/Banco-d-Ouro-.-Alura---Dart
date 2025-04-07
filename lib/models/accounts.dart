@@ -5,20 +5,23 @@ class Account {
   String name;
   String lastName;
   double balance;
+  String? accountType;
 
   Account({
     required this.id, 
     required this.name, 
     required this.lastName, 
-    required this.balance
+    required this.balance,
+    required this.accountType,
   });
 
   factory Account.fromMap(Map<String, dynamic> map){
     return Account(
-      id: map["id"], 
-      name: map["name"], 
-      lastName: map["lastName"], 
-      balance: map["balance"],
+      id: map["id"] as String, 
+      name: map["name"] as String, 
+      lastName: map["lastName"] as String, 
+      balance: map["balance"] as double,
+      accountType: (map['accountType'] != null) ? map["accountType"] as String : null,
       );
   }
   Map<String, dynamic> toMap(){
@@ -27,6 +30,7 @@ class Account {
       "name": name,
       "lastName": lastName,
       "balance": balance,
+      "accountType": accountType,
     };
   }
   //Converte um objeto(Account) em um mapa
@@ -42,12 +46,14 @@ class Account {
     String? name, 
     String? lastName, 
     double? balance,
+    String? accountType,
   }) {
     return Account(
       id: id ?? this.id, 
       name: name ?? this.name, 
       lastName: lastName ?? this.lastName, 
-      balance: balance ?? this.balance
+      balance: balance ?? this.balance,
+      accountType: accountType ?? this.accountType,
     );
   }
   //Util para modificar um ou mais atributos de um objeto existente sem afetar o otiginal
